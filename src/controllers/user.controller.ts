@@ -113,7 +113,6 @@ export async function addUser(req: Request, res: Response) {
 export async function deleteUser(req: Request, res: Response) {
   try {
     const id = req.params.id;
-    console.log("Delete user",id);
     
     const deleted = await User_Model.findByIdAndDelete(id);
     if (!deleted)

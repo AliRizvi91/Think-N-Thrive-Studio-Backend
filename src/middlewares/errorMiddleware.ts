@@ -19,15 +19,19 @@ export const errorHandler = (
       ? 'Something went wrong'
       : err.message;
 
+  // Logging
   logger.error({
     message,
     statusCode,
     stack: !isProduction ? err.stack : undefined,
   });
 
-  res.status(statusCode).json({
-    success: false,
-    message,
-    ...(!isProduction && { stack: err.stack }),
-  });
+  // Send response safely
+  if (!res.headersSent) {
+    res.status(statusCode).json({
+      success: false,
+      message,
+      ...( !isProduction && { stack: err.stack }),
+    });
+  }
 };

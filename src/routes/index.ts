@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import AdmissionRoutes from './Admission.route'; 
 import contactRoutes from './contact.routes'; 
 import courseRoutes from './course.routes'; 
@@ -16,14 +16,14 @@ router.use('/api/studio/review', reviewRoutes);
 router.use('/api/studio/user', userRoutes);
 
 // Health check endpoint
-router.get('/health', (_req, res) => {
+router.get('/health', (_req: Request, res: Response): void => {
   res.status(200).json({ status: 'healthy' });
 });
 
 // Root route
-router.get('/', (_req, res) => {
+router.get('/', (_req: Request, res: Response): void => {
   res.json({ 
-    message: "Welcome to Raza Tech Solution API",
+    message: 'Welcome to Raza Tech Solution API',
     status: 'operational'
   });
 });

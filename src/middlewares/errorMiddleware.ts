@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import type { Request, Response, NextFunction } from 'express';
 import { logger } from '../config/logger.config';
 import { isProduction } from '../config/app.config';
 
@@ -11,7 +11,7 @@ export const errorHandler = (
   _req: Request,
   res: Response,
   _next: NextFunction
-) => {
+): void => {
   const statusCode = err.statusCode ?? 500;
 
   const message =
@@ -28,6 +28,6 @@ export const errorHandler = (
   res.status(statusCode).json({
     success: false,
     message,
-    ...( !isProduction && { stack: err.stack } )
+    ...(!isProduction && { stack: err.stack }),
   });
 };

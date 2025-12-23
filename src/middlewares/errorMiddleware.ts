@@ -12,21 +12,22 @@ export const errorHandler = (
   res: Response,
   _next: NextFunction
 ) => {
-  const statusCode = err.statusCode || 500;
-  const message = isProduction && statusCode === 500 
-    ? 'Something went wrong' 
-    : err.message;
-  
+  const statusCode = err.statusCode ?? 500;
+
+  const message =
+    isProduction && statusCode === 500
+      ? 'Something went wrong'
+      : err.message;
+
   logger.error({
-    msg: message,
-    err,
+    message,
     statusCode,
-    stack: !isProduction ? err.stack : undefined
-  }, 'Error occurred');
-  
+    stack: !isProduction ? err.stack : undefined,
+  });
+
   res.status(statusCode).json({
     success: false,
     message,
-    ...(!isProduction && { stack: err.stack })
+    ...( !isProduction && { stack: err.stack } )
   });
 };

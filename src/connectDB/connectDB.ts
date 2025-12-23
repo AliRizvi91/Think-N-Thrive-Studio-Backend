@@ -12,22 +12,13 @@ export const connect = async (): Promise<void> => {
     }
 
     await mongoose.connect(mongoUri, {
-      serverSelectionTimeoutMS: 30000,
-      socketTimeoutMS: 45000,
-      retryWrites: true,
-      retryReads: true,
       maxPoolSize: 10,
       autoIndex: true,
-    });
+    } as mongoose.ConnectOptions); // 👈 FIX
 
     logger.info('Database connected successfully');
   } catch (error) {
-    if (error instanceof Error) {
-      // Correct usage: pass only the Error object
-      logger.error(error);
-    } else {
-      logger.error(new Error('Unknown database connection error'));
-    }
+    logger.error(error instanceof Error ? error : new Error('Unknown DB error'));
     throw error;
   }
 };

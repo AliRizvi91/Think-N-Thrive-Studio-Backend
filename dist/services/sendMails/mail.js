@@ -171,7 +171,6 @@ const sendmailer = async (email, token, userName) => {
         await transporter.sendMail(mailOptions);
     }
     catch (error) {
-        console.error("Error sending email:", error);
         throw error;
     }
 };

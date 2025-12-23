@@ -13,7 +13,7 @@ const getAllAdmissions = async (req, res) => {
         return res.status(200).json(admissions);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to fetch admissions" });
     }
 };
@@ -28,7 +28,7 @@ const getAdmissionById = async (req, res) => {
         return res.status(200).json(admission);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to fetch admission" });
     }
 };
@@ -63,7 +63,6 @@ const createAdmission = async (req, res) => {
         return res.status(201).json(admission);
     }
     catch (error) {
-        console.error("CREATE ADMISSION ERROR 👉", error);
         return res.status(500).json({ message: "Failed to create admission" });
     }
 };
@@ -86,7 +85,7 @@ const updateAdmission = async (req, res) => {
         return res.status(200).json(updatedAdmission);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to update admission" });
     }
 };
@@ -101,7 +100,7 @@ const deleteAdmission = async (req, res) => {
         return res.status(200).json(deletedAdmission);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to delete admission" });
     }
 };

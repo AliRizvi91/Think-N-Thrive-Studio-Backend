@@ -26,7 +26,6 @@ const uploadOnCloudinary = async (localFilePath) => {
         return response.secure_url; // safer than response.url
     }
     catch (error) {
-        console.error("Upload Error:", error);
         if (fs_1.default.existsSync(localFilePath)) {
             fs_1.default.unlinkSync(localFilePath); // Clean up the temporary file on error
         }

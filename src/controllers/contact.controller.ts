@@ -8,7 +8,7 @@ export const getAllContacts = async (req: Request, res: Response): Promise<Respo
     const contacts = await Contact_Model.find().sort({ createdAt: -1 }); // latest first
     return res.status(200).json(contacts);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to fetch contacts" });
   }
 };
@@ -21,7 +21,7 @@ export const getContactById = async (req: Request, res: Response): Promise<Respo
     if (!contact) return res.status(404).json({ message: "Contact not found" });
     return res.status(200).json(contact);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to fetch contact" });
   }
 };
@@ -58,7 +58,7 @@ export const updateContact = async (req: Request, res: Response): Promise<Respon
     if (!updatedContact) return res.status(404).json({ message: "Contact not found" });
     return res.status(200).json(updatedContact);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to update contact" });
   }
 };
@@ -71,7 +71,7 @@ export const deleteContact = async (req: Request, res: Response): Promise<Respon
     if (!deletedContact) return res.status(404).json({ message: "Contact not found" });
     return res.status(200).json(deletedContact);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to delete contact" });
   }
 };

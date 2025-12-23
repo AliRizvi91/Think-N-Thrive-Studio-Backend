@@ -28,7 +28,6 @@ User_R.get("/profile", authMiddleware_1.protect, async (req, res) => {
         });
     }
     catch (error) {
-        console.error("Profile error:", error);
         res.status(500).json({
             message: "Internal server error while retrieving profile",
             error: process.env.NODE_ENV === "development" ? error.message : undefined,

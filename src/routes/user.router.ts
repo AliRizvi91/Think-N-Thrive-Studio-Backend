@@ -39,7 +39,6 @@ User_R.get("/profile", protect, async (req: Request, res: Response) => {
       user: (req as any).user,
     });
   } catch (error: any) {
-    console.error("Profile error:", error);
     res.status(500).json({
       message: "Internal server error while retrieving profile",
       error: process.env.NODE_ENV === "development" ? error.message : undefined,

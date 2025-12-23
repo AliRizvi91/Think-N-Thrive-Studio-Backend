@@ -182,7 +182,6 @@ export const sendmailer = async (
   try {
     await transporter.sendMail(mailOptions);
   } catch (error) {
-    console.error("Error sending email:", error);
     throw error;
   }
 };

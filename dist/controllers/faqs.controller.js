@@ -9,7 +9,7 @@ const getAllFaqs = async (req, res) => {
         return res.status(200).json(faqs);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to fetch FAQs" });
     }
 };
@@ -24,7 +24,7 @@ const getFaqById = async (req, res) => {
         return res.status(200).json(faq);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to fetch FAQ" });
     }
 };
@@ -37,7 +37,7 @@ const createFaq = async (req, res) => {
         return res.status(201).json(newFaq);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to create FAQ" });
     }
 };
@@ -53,7 +53,7 @@ const updateFaq = async (req, res) => {
         return res.status(200).json(updatedFaq);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to update FAQ" });
     }
 };
@@ -68,7 +68,7 @@ const deleteFaq = async (req, res) => {
         return res.status(200).json(deletedFaq);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to delete FAQ" });
     }
 };

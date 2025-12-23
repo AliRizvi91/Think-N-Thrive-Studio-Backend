@@ -23,7 +23,6 @@ const uploadOnCloudinary = async (localFilePath: string): Promise<string | null>
     fs.unlinkSync(localFilePath); // Remove the locally saved temporary file
     return response.secure_url; // safer than response.url
   } catch (error) {
-    console.error("Upload Error:", error);
 
     if (fs.existsSync(localFilePath)) {
       fs.unlinkSync(localFilePath); // Clean up the temporary file on error

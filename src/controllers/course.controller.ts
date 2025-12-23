@@ -12,7 +12,7 @@ export const getAllCourses = async (req: Request, res: Response): Promise<Respon
     const courses = await Course.find();
     return res.status(200).json(courses);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to fetch courses" });
   }
 };
@@ -25,7 +25,7 @@ export const getCourseById = async (req: Request, res: Response): Promise<Respon
     if (!course) return res.status(404).json({ message: "Course not found" });
     return res.status(200).json(course);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to fetch course" });
   }
 };
@@ -66,7 +66,6 @@ export const createCourse = async (req: Request, res: Response): Promise<Respons
     res.header("Location", `${req.originalUrl}/${newCourse._id}`);
     return res.status(201).json(newCourse);
   } catch (error) {
-    console.error("CREATE COURSE ERROR 👉", error);
     return res.status(500).json({ message: "Failed to create course" });
   }
 };
@@ -91,7 +90,7 @@ export const updateCourse = async (req: Request, res: Response): Promise<Respons
 
     return res.status(200).json(updatedCourse);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to update course" });
   }
 };
@@ -105,7 +104,7 @@ export const deleteCourse = async (req: Request, res: Response): Promise<Respons
     if (!deletedCourse) return res.status(404).json({ message: "Course not found" });
     return res.status(200).json(deletedCourse);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to delete course" });
   }
 };

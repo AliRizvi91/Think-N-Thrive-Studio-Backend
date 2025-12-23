@@ -8,7 +8,7 @@ export const getAllReviews = async (req: Request, res: Response): Promise<Respon
     const reviews = await Review_Model.find().populate('user').populate('course')
     return res.status(200).json(reviews);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to fetch reviews" });
   }
 };
@@ -20,7 +20,7 @@ export const getReviewsByCourse = async (req: Request, res: Response): Promise<R
     const reviews = await Review_Model.find({ course: courseId }).populate('user')
     return res.status(200).json(reviews);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to fetch course reviews" });
   }
 };
@@ -33,7 +33,7 @@ export const createReview = async (req: Request, res: Response): Promise<Respons
     const review = await Review_Model.create({ user, course, comment });
     return res.status(201).json(review);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to create review" });
   }
 };
@@ -50,7 +50,7 @@ export const updateReview = async (req: Request, res: Response): Promise<Respons
     if (!updatedReview) return res.status(404).json({ message: "Review not found" });
     return res.status(200).json(updatedReview);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to update review" });
   }
 };
@@ -63,7 +63,7 @@ export const deleteReview = async (req: Request, res: Response): Promise<Respons
     if (!deletedReview) return res.status(404).json({ message: "Review not found" });
     return res.status(200).json(deletedReview);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to delete review" });
   }
 };

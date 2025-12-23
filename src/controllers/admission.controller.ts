@@ -26,7 +26,7 @@ export const getAllAdmissions = async (
     );
     return res.status(200).json(admissions);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to fetch admissions" });
   }
 };
@@ -46,7 +46,7 @@ export const getAdmissionById = async (
       return res.status(404).json({ message: "Admission not found" });
     return res.status(200).json(admission);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to fetch admission" });
   }
 };
@@ -85,7 +85,6 @@ export const createAdmission = async (
 
     return res.status(201).json(admission);
   } catch (error) {
-    console.error("CREATE ADMISSION ERROR 👉", error);
     return res.status(500).json({ message: "Failed to create admission" });
   }
 };
@@ -120,7 +119,7 @@ export const updateAdmission = async (
 
     return res.status(200).json(updatedAdmission);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to update admission" });
   }
 };
@@ -137,7 +136,7 @@ export const deleteAdmission = async (
       return res.status(404).json({ message: "Admission not found" });
     return res.status(200).json(deletedAdmission);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to delete admission" });
   }
 };

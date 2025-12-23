@@ -9,7 +9,7 @@ const getAllReviews = async (req, res) => {
         return res.status(200).json(reviews);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to fetch reviews" });
     }
 };
@@ -22,7 +22,7 @@ const getReviewsByCourse = async (req, res) => {
         return res.status(200).json(reviews);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to fetch course reviews" });
     }
 };
@@ -35,7 +35,7 @@ const createReview = async (req, res) => {
         return res.status(201).json(review);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to create review" });
     }
 };
@@ -51,7 +51,7 @@ const updateReview = async (req, res) => {
         return res.status(200).json(updatedReview);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to update review" });
     }
 };
@@ -66,7 +66,7 @@ const deleteReview = async (req, res) => {
         return res.status(200).json(deletedReview);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to delete review" });
     }
 };

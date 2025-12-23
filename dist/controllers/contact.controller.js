@@ -9,7 +9,7 @@ const getAllContacts = async (req, res) => {
         return res.status(200).json(contacts);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to fetch contacts" });
     }
 };
@@ -24,7 +24,7 @@ const getContactById = async (req, res) => {
         return res.status(200).json(contact);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to fetch contact" });
     }
 };
@@ -60,7 +60,7 @@ const updateContact = async (req, res) => {
         return res.status(200).json(updatedContact);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to update contact" });
     }
 };
@@ -75,7 +75,7 @@ const deleteContact = async (req, res) => {
         return res.status(200).json(deletedContact);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: "Failed to delete contact" });
     }
 };

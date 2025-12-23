@@ -8,7 +8,6 @@ export const getAllFaqs = async (req: Request, res: Response): Promise<Response>
     const faqs = await Faq_Model.find().sort({ createdAt: 1 }); // sorted by creation
     return res.status(200).json(faqs);
   } catch (error) {
-    console.error(error);
     return res.status(500).json({ message: "Failed to fetch FAQs" });
   }
 };
@@ -21,7 +20,6 @@ export const getFaqById = async (req: Request, res: Response): Promise<Response>
     if (!faq) return res.status(404).json({ message: "FAQ not found" });
     return res.status(200).json(faq);
   } catch (error) {
-    console.error(error);
     return res.status(500).json({ message: "Failed to fetch FAQ" });
   }
 };
@@ -33,7 +31,7 @@ export const createFaq = async (req: Request, res: Response): Promise<Response> 
     const newFaq = await Faq_Model.create({ question, answer });
     return res.status(201).json(newFaq);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to create FAQ" });
   }
 };
@@ -47,7 +45,7 @@ export const updateFaq = async (req: Request, res: Response): Promise<Response> 
     if (!updatedFaq) return res.status(404).json({ message: "FAQ not found" });
     return res.status(200).json(updatedFaq);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to update FAQ" });
   }
 };
@@ -60,7 +58,14 @@ export const deleteFaq = async (req: Request, res: Response): Promise<Response> 
     if (!deletedFaq) return res.status(404).json({ message: "FAQ not found" });
     return res.status(200).json(deletedFaq);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ message: "Failed to delete FAQ" });
   }
 };
+
+
+// rm -rf node_modules pnpm-lock.yaml
+// pnpm install
+// git add .
+// git commit -m "Fix Express TypeScript typing conflicts for Vercel"
+// git push Hero master

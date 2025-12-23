@@ -43,7 +43,7 @@ async function getAllUsers(req, res) {
         return res.status(200).json(users);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(400).json({ message: "Failed to get all Users " });
     }
 }
@@ -55,7 +55,7 @@ async function getUser(req, res) {
         return res.status(200).json(user);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(400).json({ message: "Failed to get User by Id" });
     }
 }
@@ -95,7 +95,7 @@ async function addUser(req, res) {
         });
     }
     catch (error) {
-        console.error(error);
+        
         if (error.name === "ValidationError") {
             return res.status(400).json({ message: error.message });
         }
@@ -112,7 +112,7 @@ async function deleteUser(req, res) {
         return res.status(200).json(deleted);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(400).json({ message: "Failed to delete User" });
     }
 }
@@ -137,7 +137,6 @@ async function Login(req, res) {
         res.status(200).json({ message: "Login successful" });
     }
     catch (error) {
-        console.error("Login error:", error);
         return res.status(500).json({
             message: "Server error during login",
             error: process.env.NODE_ENV === "development" ? error.message : undefined,
@@ -160,7 +159,6 @@ async function ResendToken(req, res) {
         res.status(200).json({ message: "Token resent" });
     }
     catch (error) {
-        console.error("ResendToken error:", error);
         return res.status(500).json({
             message: "Server error during ResendToken",
             error: process.env.NODE_ENV === "development" ? error.message : undefined,
@@ -192,7 +190,6 @@ async function TokenVerification(req, res) {
         });
     }
     catch (error) {
-        console.error("Token verification error:", error);
         let message = "Token verification failed";
         if (error.name === "JsonWebTokenError") {
             message = "Invalid token";
@@ -248,7 +245,6 @@ async function googleLogin(req, res) {
         });
     }
     catch (error) {
-        console.error("Google login error:", error);
         res.status(500).json({
             message: "Authentication failed",
             error: process.env.NODE_ENV === "development" ? error.message : undefined,
@@ -271,7 +267,6 @@ async function SendMailForResetPassword(req, res) {
         res.status(200).json({ message: "Password reset email sent" });
     }
     catch (error) {
-        console.error("SendMailForResetPassword error:", error);
         return res.status(500).json({
             message: "Server error during password reset email",
             error: process.env.NODE_ENV === "development" ? error.message : undefined,
@@ -297,7 +292,6 @@ async function ResetPassword(req, res) {
         res.status(200).json({ message: "Password reset successfully" });
     }
     catch (error) {
-        console.error("Password reset error:", error);
         if (error.name === "JsonWebTokenError" || error.name === "TokenExpiredError") {
             return res.status(401).json({ message: "Invalid or expired token" });
         }
@@ -340,7 +334,7 @@ const updateUser = async (req, res) => {
         return res.status(200).json(updatedUser);
     }
     catch (error) {
-        console.error(error);
+        
         return res.status(500).json({ message: error.message });
     }
 };
